@@ -44,20 +44,22 @@ const normalStyle = {
 }
 
 
-const BoxDigit = props => {// <---- irg komponentas
-  return (
-    <span style={props.boxStyle}>
-      {props.number}
-    </span>
-  );
-}
-
-
 const BoxUniversalum = props => {// <---- irg komponentas
   return (
     <div className="box" style={{borderColor:props.color}}>
       <BoxDigit number={props.number} boxStyle={props.boxStyle} />
     </div>
+  );
+}
+
+
+
+
+const BoxDigit = props => {// <---- irg komponentas
+  return (
+    <span style={props.boxStyle}>
+      {props.number}
+    </span>
   );
 }
 
@@ -67,14 +69,15 @@ class ClasicBox extends Component {
     super();
     this.state = {
       clock: new Date(),
-      color: 'green'
+      color: 'white'
     }
     console.log('CONSTRUCT')
+    // this.doClick = this.doClick.bind(this); //<----- pririsam funkcija
   }
 
   componentDidMount() {
     console.log('MOUNT')
-    this.timerID = setInterval(()=>this.ticTac(), 1000);
+    this.timerID = setInterval(()=>this.ticTac(), 100000);
   }
 
   componentWillUnmount() {
@@ -87,23 +90,51 @@ class ClasicBox extends Component {
     this.setState({clock: new Date()});
   }
 
+  // doClick() {
+  //   console.log('Hello!', this)
+  //   this.setState({color: 'red'});
+  // }
+
+  doClick1 = () => {
+    // console.log('Hello!', this.setState.color)
+    if(this.state.color === 'red') {
+      this.setState({color: 'white'});
+    }
+    else {
+      this.setState({color: 'red'});
+    }
+  }
+  doClick2 = () => {
+    // console.log('Hello!', this.setState.color)
+    if(this.state.color === 'pink') {
+      this.setState({color: 'orange'});
+    }
+    else {
+      this.setState({color: 'pink'});
+    }
+  }
+
+  doClick3 = (color) => {
+      this.setState({color: color});
+  }
+
+
   render() {
     console.log('RENDER')
     return(
-      <div className="box">
+      <div className="box" style={{borderColor:this.state.color}}>
         <BoxDigit boxStyle={normalStyle} number={this.state.clock.toLocaleTimeString()}/>
+        <button className="myButton" onClick={() => this.doClick3('red')}>MAKE RED</button>
+        <button className="myButton" onClick={() => this.doClick3('green')}>MAKE GREEN</button>
       </div>
     )
   }
 }
 
-
 function App() { // <---- komponentas
   return (
     <div className="App">
       <header className="App-header">
-        <BoxUniversalum color={'black'} number={1} boxStyle={normalStyle} />
-        <BoxUniversalum color={'black'} number={2} boxStyle={normalStyle} />
         <BoxUniversalum color={'yellow'} number={3} boxStyle={normalStyle} />
         <BoxUniversalum color={'green'} number={getRandomInt(10)} boxStyle={fancyStyle} />
         <ClasicBox color={'yellow'} />

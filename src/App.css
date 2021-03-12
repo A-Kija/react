@@ -44,5 +44,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 10px;
+}
+
+.myButton {
+    background-color: green;
+    border-radius: 28px;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    /* font-family: Arial; */
+    font-size: 17px;
+    padding: 16px 31px;
+    margin-top: 15px;
+    text-decoration: none;
+    outline: none;
+}
+
+.myButton:hover {
+    /* background-color: greenyellow; */
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
 }
