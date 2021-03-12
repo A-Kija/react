@@ -1,4 +1,5 @@
 import './App.css';
+import {Component} from 'react';
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -60,6 +61,42 @@ const BoxUniversalum = props => {// <---- irg komponentas
   );
 }
 
+class ClasicBox extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      clock: new Date(),
+      color: 'green'
+    }
+    console.log('CONSTRUCT')
+  }
+
+  componentDidMount() {
+    console.log('MOUNT')
+    this.timerID = setInterval(()=>this.ticTac(), 1000);
+  }
+
+  componentWillUnmount() {
+    console.log('UNMOUNT')
+    clearInterval(this.timerID);
+  }
+
+  ticTac() {
+    console.log('TIC-TAC')
+    this.setState({clock: new Date()});
+  }
+
+  render() {
+    console.log('RENDER')
+    return(
+      <div className="box">
+        <BoxDigit boxStyle={normalStyle} number={this.state.clock.toLocaleTimeString()}/>
+      </div>
+    )
+  }
+}
+
 
 function App() { // <---- komponentas
   return (
@@ -69,6 +106,7 @@ function App() { // <---- komponentas
         <BoxUniversalum color={'black'} number={2} boxStyle={normalStyle} />
         <BoxUniversalum color={'yellow'} number={3} boxStyle={normalStyle} />
         <BoxUniversalum color={'green'} number={getRandomInt(10)} boxStyle={fancyStyle} />
+        <ClasicBox color={'yellow'} />
       </header>
     </div>
   );
