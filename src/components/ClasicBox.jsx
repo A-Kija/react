@@ -17,7 +17,7 @@ class ClasicBox extends Component {
   
     componentDidMount() {
       console.log('MOUNT')
-      this.timerID = setInterval(()=>this.ticTac(), 100000);
+      this.timerID = setInterval(()=>this.ticTac(), 1000);
     }
   
     componentWillUnmount() {
