@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import BoxDigit from './BoxDigit';
 import ColorButton from './ColorButton';
+import ColorHolder from './ColorHolder';
 import {normalStyle} from '../shared/styles';
 
 class ClasicBox extends Component {
@@ -42,6 +43,7 @@ class ClasicBox extends Component {
           <BoxDigit boxStyle={normalStyle} number={this.state.clock.toLocaleTimeString()}/>
           <button className="myButton" onClick={() => this.doClick3('red')}>{this.props.button1Title}</button>
          <ColorButton actionMethod={this.doClick3} title={this.props.button2Title}></ColorButton>
+        <ColorHolder showColor={this.state.clock.getSeconds()%2}/>
         </div>
       )
     }
