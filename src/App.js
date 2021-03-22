@@ -6,6 +6,7 @@ import {normalStyle, fancyStyle} from './shared/styles';
 import {getRandomInt} from './functions';
 import TwoButtonBox from './components/TwoButtonBox';
 import UlBox from './components/UlBox';
+import ClasicForm from './components/ClassicForm';
 
 
 function App() { // <---- pagrindinis komponentas
@@ -16,6 +17,7 @@ function App() { // <---- pagrindinis komponentas
         <BoxUniversalum color={'green'} number={getRandomInt(10)} boxStyle={fancyStyle} />
         <ClasicBox button1Title={'MAKE RED!'} button2Title={'MAKE GREEN!'} />
         <TwoButtonBox/>
+        <ClasicForm/>
       </header>
     </div>
   );

@@ -11,3 +11,7 @@ export const letters = [
     { d: 'HHTR', id: 3 },
     { d: 'JUYG', id: 4 }
 ];
+
+const superMain = 'SUPER';
+
+export default superMain;
