@@ -49,6 +49,32 @@
     margin: 10px;
 }
 
+.box.text .box-title {
+    font-size: 14px;
+    color: indigo;
+}
+
+.box.text .box-text {
+    font-size: 11px;
+    padding: 5px;
+}
+
+.box.line {
+    flex-direction: row;
+    height: auto;
+    width: auto;
+}
+
+.box.line .slider-box {
+    padding: 10px 50px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.box.line span {
+    font-size: 10px;
+}
+
 .box.big {
     width: 500px;
     height: auto;
