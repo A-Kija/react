@@ -8,7 +8,7 @@ function App() { // <---- pagrindinis komponentas
   return (
     <div className="App">
       <header className="App-header">
-        <Effect/>
+        <Effect vardas1={'Jonas'} vardas2={'Greta'}/>
       </header>
     </div>
   );
