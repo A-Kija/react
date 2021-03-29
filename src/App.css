@@ -135,6 +135,38 @@ li {
     list-style: none;
 }
 
+ul {
+    border-top: 1px dotted greenyellow;
+}
+
+li {
+    display: flex;
+    width: 500px;
+    justify-content: flex-start;
+    border-bottom: 1px dotted greenyellow;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+li .user-id {
+    display: inline-block;
+    width: 40px;
+    margin-right: 15px;
+}
+
+li .post-title {
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+li .post-id {
+    font-size: 14px;
+    width: 40px;
+    margin-right: 15px;
+}
+
 .color-box {
     width: 50px;
     height: 50px;
