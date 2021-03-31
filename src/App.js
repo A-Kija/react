@@ -1,8 +1,13 @@
 import './App.css';
-import Effect from './components/Effect';
 
-import Users from './components/Users';
-import Posts from './components/Posts';
+import ZooBox from './components/ZooBox';
+
+// cia rasau del to, kad butu patogiau kaitalioti
+const zooList = [{id:45, name:'zebro'},{id:78, name:'tiger'}];
+
+// const zooList = [];
+
+// const zooList = null;
 
 
 
@@ -11,9 +16,7 @@ function App() { // <---- pagrindinis komponentas
   return (
     <div className="App">
       <header className="App-header">
-        <Effect vardas1={'Jonas'} vardas2={'Greta'}/>
-        <Users/>
-        <Posts/>
+        <ZooBox zooList={zooList}/>
       </header>
     </div>
   );
