@@ -8,22 +8,6 @@ useEffect(() => {
 
 }, []);
 
-if(!zooList) {
-    return (
-        <div className="box">
-            <h3 style={{color:'red'}}>Error</h3>
-        </div>
-    )
-}
-else if(!zooList.length) {
-    return (
-        <div className="box">
-            <h3 style={{color:'blue'}}>No animals in this ZOO</h3>
-        </div>
-    )
-}
-else {
-
 return (
     <div className="big box">
         <ul>
@@ -39,6 +23,6 @@ return (
 }
 
 
-}
+
 
 export default ZooBox;
