@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-const CityBox = ({zooList}) => {
+const CityBox = ({cityList, listColor}) => {
 
 useEffect(() => {
 
@@ -10,9 +10,9 @@ useEffect(() => {
 return (
     <div className="big box">
         <ul>
-            {zooList.map(citizen => <li key={citizen.id}>
+            {cityList.map(citizen => <li key={citizen.id}>
                     <span className="post-id">{citizen.id}.</span> 
-                    <span className="post-title">{citizen.name}</span>
+                    <span style={{color: listColor}}  className="post-title">{citizen.name}</span>
                 </li>
             )}
         </ul>

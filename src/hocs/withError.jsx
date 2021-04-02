@@ -1,4 +1,4 @@
-import ErrorComponent from "../components/ErrorComponent";
+// import ErrorComponent from "../components/ErrorComponent";
 
 // function withZooBoxError(Component) {
 //     return function (props) {
@@ -10,8 +10,8 @@ import ErrorComponent from "../components/ErrorComponent";
 
 // tas pats kas virsuje
 
-const withError = (Component) => ({errorColor, ...props}) =>
-    !props.zooList
+const withError = (checkFun, ErrorComponent) => (Component) => ({errorColor, ...props}) =>
+    checkFun(props)
         ? <ErrorComponent errorColor={errorColor}/>
         : <Component {...props}/>
 

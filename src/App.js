@@ -8,6 +8,8 @@ import ZooBox from './components/ZooBox';
 
 
 // cia rasau del to, kad butu patogiau kaitalioti
+// const zooList = [{id:45, name:'zebro'},{id:78, name:'tiger'},{id:79, name:'makaka'}];
+
 // const zooList = [{id:45, name:'zebro'},{id:78, name:'tiger'}];
 
 const zooList = [];
@@ -16,7 +18,9 @@ const zooList = [];
 
 
 
-const cityList = [{id:145, name:'John'},{id:7855, name:'Ann'}];
+const cityList = [{id:145, name:'John'},{id:7855, name:'Ann'},{id:'007', name:'James Bond'}];
+
+// const cityList = [{id:145, name:'John'},{id:7855, name:'Ann'}];
 
 // const cityList = [];
 
@@ -35,7 +39,7 @@ function App() { // <---- pagrindinis komponentas
     <div className="App">
       <header className="App-header">
         <ZooBoxWithCompose zooList={zooList} errorColor={'yellow'} emptyColor={'brown'}/>
-        <CityBoxWithCompose zooList={cityList} errorColor={'yellow'} emptyColor={'brown'}/>
+        <CityBoxWithCompose cityList={cityList} errorColor={'yellow'} emptyColor={'brown'}/>
       </header>
     </div>
   );
