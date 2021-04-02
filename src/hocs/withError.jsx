@@ -10,10 +10,10 @@ import ErrorComponent from "../components/ErrorComponent";
 
 // tas pats kas virsuje
 
-const withZooBoxError = (Component) => (props) =>
+const withError = (Component) => ({errorColor, ...props}) =>
     !props.zooList
-        ? <ErrorComponent/>
+        ? <ErrorComponent errorColor={errorColor}/>
         : <Component {...props}/>
 
-export default withZooBoxError;
+export default withError;
 

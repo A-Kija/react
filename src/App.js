@@ -2,17 +2,25 @@ import './App.css';
 
 
 
-import ZooBox from './hocs/withZooBoxCompose';
+import {ZooBoxWithCompose, CityBoxWithCompose} from './hocs/withCompose';
 
-// import ZooBox from './components/ZooBox';
+import ZooBox from './components/ZooBox';
 
 
 // cia rasau del to, kad butu patogiau kaitalioti
 // const zooList = [{id:45, name:'zebro'},{id:78, name:'tiger'}];
 
-// const zooList = [];
+const zooList = [];
 
-const zooList = null;
+// const zooList = null;
+
+
+
+const cityList = [{id:145, name:'John'},{id:7855, name:'Ann'}];
+
+// const cityList = [];
+
+// const cityList = null;
 
 
 // const ZooBox2 = withZooBoxEmpty(ZooBox);
@@ -26,7 +34,8 @@ function App() { // <---- pagrindinis komponentas
   return (
     <div className="App">
       <header className="App-header">
-        <ZooBox zooList={zooList}/>
+        <ZooBoxWithCompose zooList={zooList} errorColor={'yellow'} emptyColor={'brown'}/>
+        <CityBoxWithCompose zooList={cityList} errorColor={'yellow'} emptyColor={'brown'}/>
       </header>
     </div>
   );
