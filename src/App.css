@@ -178,3 +178,39 @@ li .post-id {
     flex-direction: column;
     margin-right: 44px;
 }
+
+li.car-li {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    margin: 5px;
+    padding: 5px;
+}
+
+ul.car-ul {
+    border: none;
+}
+
+li.car-li .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+li.car-li .buttons button {
+    margin: 5px;
+    min-width: 150px;
+    background-color: yellow;
+    border-radius: 10px;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 8px 31px;
+    text-decoration: none;
+    outline: none;
+    color: black;
+}

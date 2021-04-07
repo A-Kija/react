@@ -1,4 +1,4 @@
-import {INCREASE, DECREASE} from '../constants';
+// import {INCREASE, DECREASE} from '../constants';
     // (count, actionPlus1) => newCount
 
     // const counterReducer = (count, actionPlus1) => {
@@ -15,7 +15,7 @@ import {INCREASE, DECREASE} from '../constants';
     //     return count; // <------- turi kazka grazinti, kas patampa nauju state
     // }
 
-    const action = {type: INCREASE, payload: 5}
+    // const action = {type: INCREASE, payload: 5}
 
     // const counterReducer = (state, action) => {
     //     switch (action.type) {
@@ -25,23 +25,40 @@ import {INCREASE, DECREASE} from '../constants';
     //     }
     // }
 
-    const state = {count: 0};
+    // const state = {count: 0};
 
-    const counterReducer = (state, action) => {
-        switch (action.type) {
-            case INCREASE: return {...state, count: state.count + action.payload};
-            case DECREASE: return {...state, count: state.count - action.payload};
-            default: return state;
-        }
-    }
+    // const counterReducer = (state, action) => {
+    //     switch (action.type) {
+    //         case INCREASE: return {...state, count: state.count + action.payload};
+    //         case DECREASE: return {...state, count: state.count - action.payload};
+    //         default: return state;
+    //     }
+    // }
+
+import initCars from '../shared/cars';
+import { useReducer } from 'react';
+import carReducer from '../reducers/carReducer';
+import {MAKE_BLACK, MAKE_BROWN} from '../constants';
+
+const CarBox = () => {
 
 
+const [cars, dispatch] = useReducer(carReducer, initCars);
 
-const CarBox = ({boxStyle}) => {
+
     return (
-      <span style={boxStyle}>
-        111
-      </span>
+        <ul className="car-ul">
+            {cars.map(car => (
+                <li className="car-li" key={car.id} style={{background:car.color}}>
+                    <h2>{car.maker}</h2>
+                    <div className="buttons">
+                        <button onClick={()=>dispatch({type:MAKE_BLACK, payload:{id:car.id}})}>Make Black</button>
+                        <button onClick={()=>dispatch({type:MAKE_BROWN, payload:{id:car.id}})}>Make Brown</button>
+                    </div>
+                </li>
+            ))
+            }
+        </ul>
     );
   }
 
