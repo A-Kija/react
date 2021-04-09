@@ -187,6 +187,7 @@ li.car-li {
     border: 1px solid white;
     margin: 5px;
     padding: 5px;
+    width: 700px;
 }
 
 ul.car-ul {
@@ -213,4 +214,11 @@ li.car-li .buttons button {
     text-decoration: none;
     outline: none;
     color: black;
+}
+
+li.car-li .buttons input {
+    height: 25px;
+    font-size: 16px;
+    outline: none;
+    margin: 10px 0;
 }
