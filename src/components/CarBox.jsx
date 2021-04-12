@@ -36,17 +36,29 @@
     // }
 
 import initCars from '../shared/cars';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import carReducer from '../reducers/carReducer';
-import {MAKE_BLACK, MAKE_BROWN, CHANGE_MAKER, SAVE_MAKER, INIT_CARS} from '../constants';
+import {MAKE_BLACK, MAKE_BROWN, CHANGE_MAKER, SAVE_MAKER, INIT_CARS, ROLL_BACK} from '../constants';
 
 const CarBox = () => {
 
-
+const alreadyMounted = useRef(false);
 const [cars, dispatch] = useReducer(carReducer, initCars);
+
+
+
+
+
+
 
 useEffect(()=>{
     dispatch({type:INIT_CARS, payload:{newMakerInit: 'Please enter'}})
+
+    window.addEventListener('storage', () => {
+        console.log('STORAGE EVENT',JSON.parse(window.localStorage.getItem('history')));
+    });
+
+    localStorage.setItem('count', 0);
 
 
     localStorage.setItem('history', JSON.stringify([]));
@@ -71,14 +83,33 @@ useEffect(()=>{
 }, []);
 
 
+
+useEffect(()=> {
+    if (alreadyMounted.current) {// antras ir toliau
+        let history = JSON.parse(localStorage.history);
+        if (cars.history === 'new') {
+            history.unshift(cars);
+        }
+        else if (cars.history === 'old') {
+            history.shift();
+        }
+        
+        localStorage.setItem('history', JSON.stringify(history));
+    }
+    else {// pirmas kartas
+        alreadyMounted.current = true;
+    }
+}, [cars]);
+
+
     return (
         <>
         <ul className="car-ul">
             <li className="car-li" key={0} style={{background:'gray'}}>
-            <div>{localStorage.getItem('person')}</div>
-            <div>{JSON.parse(localStorage.animal).name}</div>
+            <div>History:</div>
+            <div><button onClick={()=>dispatch({type:ROLL_BACK})}>Go Back</button></div>
             </li>
-            {cars.map(car => (
+            {cars.data.map(car => (
                 <li className="car-li" key={car.id} style={{background:car.color}}>
                     <h2>{car.maker}</h2>
                     <div className="buttons">
@@ -86,7 +117,7 @@ useEffect(()=>{
                         <button onClick={()=>dispatch({type:MAKE_BROWN, payload:{id:car.id}})}>Make Brown</button>
                     </div>
                     <div className="buttons">
-                        <input type="text" onChange={(e)=>dispatch({ type:CHANGE_MAKER, payload:{id:car.id, maker:e.target.value} })} value={car.newMaker}/>
+                        <input type="text" onChange={(e)=>dispatch({ type:CHANGE_MAKER, payload:{id:car.id, maker:e.target.value} })} value={car.newMaker || ''}/>
                         <button onClick={()=>dispatch({type:SAVE_MAKER, payload:{id:car.id}})}>Set Maker</button>
                     </div>
                 </li>
