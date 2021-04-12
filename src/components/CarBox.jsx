@@ -36,9 +36,10 @@
     // }
 
 import initCars from '../shared/cars';
-import { useEffect, useReducer, useRef } from 'react';
+import { useContext, useEffect, useReducer, useRef } from 'react';
 import carReducer from '../reducers/carReducer';
 import {MAKE_BLACK, MAKE_BROWN, CHANGE_MAKER, SAVE_MAKER, INIT_CARS, ROLL_BACK} from '../constants';
+import ButtonCollor from '../contexts/ButtonColor';
 
 const CarBox = () => {
 
@@ -47,7 +48,7 @@ const [cars, dispatch] = useReducer(carReducer, initCars);
 
 
 
-
+const bttColor = useContext(ButtonCollor);
 
 
 
@@ -81,7 +82,6 @@ useEffect(()=>{
 
 
 }, []);
-
 
 
 useEffect(()=> {
@@ -118,7 +118,14 @@ useEffect(()=> {
                     </div>
                     <div className="buttons">
                         <input type="text" onChange={(e)=>dispatch({ type:CHANGE_MAKER, payload:{id:car.id, maker:e.target.value} })} value={car.newMaker || ''}/>
-                        <button onClick={()=>dispatch({type:SAVE_MAKER, payload:{id:car.id}})}>Set Maker</button>
+                        {/* <ButtonCollor.Consumer>
+                        { value => (
+                            <button style={{backgroundColor:value}} onClick={()=>dispatch({type:SAVE_MAKER, payload:{id:car.id}})}>Set Maker</button>
+                        )}
+                        </ButtonCollor.Consumer> */}
+
+                        <button style={{backgroundColor:bttColor}} onClick={()=>dispatch({type:SAVE_MAKER, payload:{id:car.id}})}>Set Maker</button>
+
                     </div>
                 </li>
             ))
