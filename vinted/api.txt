@@ -1,15 +1,18 @@
+
+
 Naujienų srautas
 
 
-/api/new/1/50   gražina info nuo 1 iki 50 prekės
-/api/new/51/100 gražina info nuo 51 iki 100 prekės
+neveikia /api/new/1/50   gražina info nuo 1 iki 50 prekės
+neveikia /api/new/51/100 gražina info nuo 51 iki 100 prekės
+https://in3.dev/vinted/api/new
 
 {
     [{id: 89995412}, {id: 89997412}] produkto id sąrašas
 }
 
 
-/api/product/id  info apie produktą
+https://in3.dev/vinted/api/product/id  info apie produktą
 
 {
     img: ['url1', 'url2', 'url3'],  nuo 0 iki 10 foto linkų
@@ -22,14 +25,14 @@ Naujienų srautas
     hearts: 45
 }
 
-/api/hearts/add/id padidėja širdučių skaičius produktui su id
+neveikia /api/hearts/add/id padidėja širdučių skaičius produktui su id
 
 {
     'count': 45
 }
 
 
-/api/user/id info apie userį
+https://in3.dev/vinted/api/user/id info apie userį
 
 {
     id: 5465465
@@ -37,14 +40,14 @@ Naujienų srautas
     name: 'pingvinė'
 }
 
-/api/brand/id info apie brandą
+https://in3.dev/vinted/api/brand/id info apie brandą
 
 {
     id: 5465465
     name: 'Dolčė ir Gabanė'
 }
 
-/api/brand/all visas galimas brandų sąrašas
+https://in3.dev/vinted/api/brand/all visas galimas brandų sąrašas
 
 {
     [{id: 5465465, name: 'Dolčė ir Gabanė'}, {id: 5447465, name: 'Ądidas'}]
