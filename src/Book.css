@@ -1,0 +1,268 @@
+* {
+    box-sizing: border-box;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: honeydew;
+    min-height: 100vh;
+}
+
+.App-header {
+    display: flex;
+    background-color: lavender;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: lightcoral;
+    font-size: 200%;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.box.text .box-title {
+    font-size: 14px;
+    color: indigo;
+}
+
+.box.text .box-text {
+    font-size: 11px;
+    padding: 5px;
+}
+
+.box.line {
+    flex-direction: row;
+    height: auto;
+    width: auto;
+}
+
+.box.line .slider-box {
+    padding: 10px 50px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.box.line span {
+    font-size: 10px;
+}
+
+.box.big {
+    width: 500px;
+    height: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 200px;
+    padding: 15px;
+}
+
+.box.big input,
+.box.big select {
+    width: 400px;
+    height: 25px;
+    font-size: 16px;
+    outline: none;
+    margin: 10px 0;
+}
+
+.box.big textarea {
+    width: 400px;
+    height: 70px;
+    font-size: 16px;
+    outline: none;
+    margin: 10px 0;
+}
+
+.myButton {
+    background-color: green;
+    border-radius: 10px;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    /* font-family: Arial; */
+    font-size: 17px;
+    padding: 8px 31px;
+    margin: 5px 0;
+    text-decoration: none;
+    outline: none;
+}
+
+.myButton:hover {
+    /* background-color: greenyellow; */
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul {
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+li {
+    display: flex;
+    width: 25%;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+li .content {
+    border: 1px solid greenyellow;
+    width: 100%;
+    height: 230px;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    align-items: center;
+}
+
+li .content .title {
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 20px;
+    color: lightslategray;
+}
+
+li .content .author {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: pink;
+    font-style: italic;
+    padding-bottom: 8px;
+}
+
+li .content .img {
+    width: 70px;
+    text-align: center;
+    font-size: 10px;
+    color: pink;
+    font-style: italic;
+    min-height: 110px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+li .content .price {
+    text-align: center;
+    font-size: 19px;
+    color: seagreen;
+    font-weight: bold;
+}
+
+li .content .cat {
+    text-align: right;
+    font-size: 14px;
+    color: steelblue;
+    padding: 0 15px;
+    width: 100%;
+}
+
+li .user-id {
+    display: inline-block;
+    width: 40px;
+    margin-right: 15px;
+}
+
+li .post-title {
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+li .post-id {
+    font-size: 14px;
+    width: 40px;
+    margin-right: 15px;
+}
+
+.color-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.button-holder {
+    display: flex;
+    flex-direction: column;
+    margin-right: 44px;
+}
+
+li.car-li {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    margin: 5px;
+    padding: 5px;
+    width: 700px;
+}
+
+ul.car-ul {
+    border: none;
+}
+
+li.car-li .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+li.car-li .buttons button {
+    margin: 5px;
+    min-width: 150px;
+    background-color: yellow;
+    border-radius: 10px;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 8px 31px;
+    text-decoration: none;
+    outline: none;
+    color: black;
+}
+
+li.car-li .buttons input {
+    height: 25px;
+    font-size: 16px;
+    outline: none;
+    margin: 10px 0;
+}

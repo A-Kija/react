@@ -19,11 +19,11 @@ const click2 = () => {
     inputRef.current.value = refCount.current;
 }
 
-useEffect(()=>{
-    console.log("COMPONENT MOUNTED", inputRef)
-    inputRef.current.focus();
-    inputRef.current.value = "LALALALALALALA";
-},[]);
+// useEffect(()=>{
+    // console.log("COMPONENT MOUNTED", inputRef)
+    // inputRef.current.focus();
+    // inputRef.current.value = "LALALALALALALA";
+// },[]);
 
 console.log("COMPONENT RERENDER", inputRef)
 return (
