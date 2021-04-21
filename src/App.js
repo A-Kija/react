@@ -10,33 +10,31 @@ import API from './shared/booksApi';
 function App() { // <---- pagrindinis komponentas
 
     const [books, setBooks] = useState([]);
-    const [types, setTypes] = useState([]);
-    // const types = useContext(Types);
+    const [types, setTypes] = useState(useContext(Types));
 
+    // books list
     useEffect(()=> {
-        console.log('START');
         API.get(``)
         .then(response => {
             console.log(response.data)
             setBooks(response.data);
-
         })
         .catch(error => {})
-
-
     }, []);
 
-
+    // types list
     useEffect(()=> {
-        API.get(`/types/`)
-        .then(response => {
-            console.log(response.data)
-            setTypes(response.data);
+        const bookTypes = JSON.parse(localStorage.getItem('bookTypes'));
 
-        })
-        .catch(error => {})
-
-
+        console.log('bookTypes', bookTypes);
+        if (!bookTypes) {
+            API.get(`/types/`)
+            .then(response => {
+                setTypes(response.data);
+                localStorage.setItem('bookTypes', JSON.stringify(response.data))
+            })
+            .catch(error => {})
+        }
     }, []);
 
 
@@ -46,11 +44,11 @@ function App() { // <---- pagrindinis komponentas
         <header className="App-header">
             <span>Books Store</span>
         </header>
-        {/* <Types.Provider value={types}> */}
+        <Types.Provider value={types}>
         <main>
-            <BooksList types={types} books={books}></BooksList>
+            <BooksList books={books}></BooksList>
         </main>
-        {/* </Types.Provider> */}
+        </Types.Provider>
         <footer>
 
         </footer>

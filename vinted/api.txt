@@ -3,20 +3,20 @@
 Naujienų srautas
 
 
-neveikia /api/new/1/50   gražina info nuo 1 iki 50 prekės
-neveikia /api/new/51/100 gražina info nuo 51 iki 100 prekės
-https://in3.dev/vinted/api/new
+neveikia /api/news/1/50   gražina info nuo 1 iki 50 prekės
+neveikia /api/news/51/100 gražina info nuo 51 iki 100 prekės
+https://in3.dev/vinted/api/news
 
 {
     [{id: 89995412}, {id: 89997412}] produkto id sąrašas
 }
 
 
-https://in3.dev/vinted/api/product/id  info apie produktą
+https://in3.dev/vinted/api/products/id  info apie produktą
 
 {
     img: ['url1', 'url2', 'url3'],  nuo 0 iki 10 foto linkų
-    main: 2 pagrindinės nuotraukos indeksas masyve  
+    main_img: 2 pagrindinės nuotraukos indeksas masyve  
     price: 15.55
     size: ['XXl','42','18'] masyvas su kategorijų sąrašu
     brand: 48 prekės ženklo id
@@ -32,7 +32,7 @@ neveikia /api/hearts/add/id padidėja širdučių skaičius produktui su id
 }
 
 
-https://in3.dev/vinted/api/user/id info apie userį
+https://in3.dev/vinted/api/users/id info apie userį
 
 {
     id: 5465465
@@ -40,14 +40,14 @@ https://in3.dev/vinted/api/user/id info apie userį
     name: 'pingvinė'
 }
 
-https://in3.dev/vinted/api/brand/id info apie brandą
+https://in3.dev/vinted/api/brands/id info apie brandą
 
 {
     id: 5465465
     name: 'Dolčė ir Gabanė'
 }
 
-https://in3.dev/vinted/api/brand/all visas galimas brandų sąrašas
+https://in3.dev/vinted/api/brands/all visas galimas brandų sąrašas
 
 {
     [{id: 5465465, name: 'Dolčė ir Gabanė'}, {id: 5447465, name: 'Ądidas'}]
