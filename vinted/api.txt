@@ -5,7 +5,7 @@ Naujienų srautas
 
 neveikia /api/news/1/50   gražina info nuo 1 iki 50 prekės
 neveikia /api/news/51/100 gražina info nuo 51 iki 100 prekės
-https://in3.dev/vinted/api/news
+https://in3.dev/vinted/api/news/
 
 {
     [{id: 89995412}, {id: 89997412}] produkto id sąrašas
@@ -21,6 +21,7 @@ https://in3.dev/vinted/api/products/id  info apie produktą
     size: ['XXl','42','18'] masyvas su kategorijų sąrašu
     brand: 48 prekės ženklo id
     user: 4788 userio id
+    cat: 12 kategorijos id
     likes: [54654,46546,8979879877,6546465] // userių padėjusių savo laiką ids
     hearts: 45
 }
@@ -51,4 +52,20 @@ https://in3.dev/vinted/api/brands/all visas galimas brandų sąrašas
 
 {
     [{id: 5465465, name: 'Dolčė ir Gabanė'}, {id: 5447465, name: 'Ądidas'}]
+}
+
+
+
+
+https://in3.dev/vinted/api/cats/id info apie kategoriją
+
+{
+    id: 5465465
+    name: 'Lagaminai'
+}
+
+https://in3.dev/vinted/api/cats/all visas galimas kategorijų sąrašas
+
+{
+    [{id: 5465465, name: 'Lagaminai'}, {id: 5447465, name: 'Šortai'}]
 }
