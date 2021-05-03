@@ -1,19 +1,13 @@
 import { useEffect, useContext, useState, useReducer } from 'react';
 import './Book.css';
-import { GET_NEWS_FROM_SERVER, CHANGE_ITEMS_PER_PAGE, SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, FILTER_BOOKS_BY_TYPE, SET_ACTIVE_PAGE } from "./constants";
+import { CHANGE_ITEMS_PER_PAGE, SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, FILTER_BOOKS_BY_TYPE, SET_ACTIVE_PAGE } from "./constants";
 import BooksList from './components/BooksList';
 import Types from './contexts/Types';
 import API from './shared/booksApi';
-import API2 from './shared/vintedApi';
 
 import booksReducer from './reducers/booksReducer';
 import BooksTypeSelector from './components/BooksTypeSelector';
 import BooksPager from './components/BookPager';
-
-
-
-import vintedReducer from './reducers/vintedReducer';
-import VintedList from './components/VintedList';
 
 
 
@@ -34,24 +28,6 @@ function App() { // <---- pagrindinis komponentas
     // const [activePage, setActivePage] = useState(1);
 
 
-    const [vinted, vintedDispatch] = useReducer(vintedReducer, {news: [], products: []});
-
-    useEffect(()=> {
-        API2.get(`news/`)
-        .then(response => {
-            console.log(response.data)
-            vintedDispatch({type:GET_NEWS_FROM_SERVER, payload: response.data});
-        })
-        .catch(error => {})
-
-    }, []);
-
-
-
-
-
-    
-    
     useEffect(()=> {
         API.get(``)
         .then(response => {
@@ -117,12 +93,6 @@ function App() { // <---- pagrindinis komponentas
                 <BooksPager activePage={books.activePage} handlePageSelect={handlePageSelect} itemsPerPage={itemsPerPage} allItemsCount={books.allBooks.length}></BooksPager>
             </main>
         </Types.Provider>
-
-            <main>
-                <VintedList vinted={vinted} vintedDispatch={vintedDispatch}></VintedList>
-            </main>
-
-
         <footer>
 
         </footer>
