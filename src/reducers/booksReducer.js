@@ -1,4 +1,4 @@
-import { SET_ACTIVE_PAGE, SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, FILTER_BOOKS_BY_TYPE, CHANGE_ITEMS_PER_PAGE } from "../constants";
+import { UPDATE_BOOKS_FROM_SERVER, SET_ACTIVE_PAGE, SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, FILTER_BOOKS_BY_TYPE, CHANGE_ITEMS_PER_PAGE } from "../constants";
 const booksReducer = (state, action) => {
     let sorted;
     switch (action.type) {
@@ -32,6 +32,18 @@ const booksReducer = (state, action) => {
                 activePage: 1
             };
 
+
+        case UPDATE_BOOKS_FROM_SERVER:
+
+            const updated = state.allBooks.concat(action.payload.updatedBooks);
+
+
+
+
+
+            console.log(updated);
+
+            return state;
 
 
 

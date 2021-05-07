@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState, useReducer } from 'react';
 import './Book.css';
-import { GET_NEWS_FROM_SERVER, CHANGE_ITEMS_PER_PAGE, SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, FILTER_BOOKS_BY_TYPE, SET_ACTIVE_PAGE } from "./constants";
+import { UPDATE_BOOKS_FROM_SERVER, GET_NEWS_FROM_SERVER, CHANGE_ITEMS_PER_PAGE, SORT_PRICE_UP, SORT_PRICE_DOWN, GET_BOOKS_FROM_SERVER, FILTER_BOOKS_BY_TYPE, SET_ACTIVE_PAGE } from "./constants";
 import BooksList from './components/BooksList';
 import Types from './contexts/Types';
 import API from './shared/booksApi';
@@ -14,6 +14,12 @@ import BooksPager from './components/BookPager';
 
 import vintedReducer from './reducers/vintedReducer';
 import VintedList from './components/VintedList';
+import VintedProductPage from './components/VintedProductPage';
+import History from './components/History';
+
+
+import {BrowserRouter as Router, Link, Route, Switch, useHistory} from 'react-router-dom';
+import RouterHooks from './components/RouterHooks';
 
 
 
@@ -33,18 +39,43 @@ function App() { // <---- pagrindinis komponentas
 
     // const [activePage, setActivePage] = useState(1);
 
+    const [lastUpdateTime, setLastUpdateTime] = useState(Date.now());
 
-    const [vinted, vintedDispatch] = useReducer(vintedReducer, {news: [], products: []});
 
-    useEffect(()=> {
-        API2.get(`news/`)
+    useEffect(() => {
+        API.post(``, {time: (Math.round(lastUpdateTime/1000)-10)})
         .then(response => {
+            booksDispatch({type:UPDATE_BOOKS_FROM_SERVER, payload: {updatedBooks: response.data, itemsPerPage: itemsPerPage}});
             console.log(response.data)
-            vintedDispatch({type:GET_NEWS_FROM_SERVER, payload: response.data});
+            
         })
         .catch(error => {})
+        console.log(lastUpdateTime)
+    }, [lastUpdateTime]);
 
+
+    useEffect(() => {
+        const lastUpdateTimerId = setInterval(
+            () => setLastUpdateTime(Date.now()),
+            10000
+        );
+        return function cleanTimer() {
+            clearInterval(lastUpdateTimerId)
+        }
     }, []);
+
+
+    // const [vinted, vintedDispatch] = useReducer(vintedReducer, {news: [], products: []});
+
+    // useEffect(()=> {
+    //     API2.get(`news/`)
+    //     .then(response => {
+    //         console.log(response.data)
+    //         vintedDispatch({type:GET_NEWS_FROM_SERVER, payload: response.data});
+    //     })
+    //     .catch(error => {})
+
+    // }, []);
 
 
 
@@ -96,36 +127,73 @@ function App() { // <---- pagrindinis komponentas
     }, [itemsPerPage]);
 
 
-
-
-
     return (
         <div className="App">
+        <Router>
         <Types.Provider value={types}>
             <header className="App-header">
+
+                <Link to="/">
+                <span>Home</span>
+                </Link>
+
+                <Link to="/books">
                 <span>Books Store</span>
+                </Link>
+                <Link to="/show-vinted">
+                <i>Show Vinted</i>
+                </Link>
                 <div className="buttons-holder">
                     <BooksTypeSelector handleTypeSelect={handleTypeSelect} typeSelectValue={typeSelectValue}></BooksTypeSelector>
                     <button className="filter">Apply filter</button>
                     <button className="sort" onClick={()=>booksDispatch({type:SORT_PRICE_UP, payload: {itemsPerPage: itemsPerPage}})}>Sort by price UP</button>
                     <button className="sort" onClick={()=>booksDispatch({type:SORT_PRICE_DOWN, payload: {itemsPerPage: itemsPerPage}})}>Sort by price DOWN</button>
+                
                 </div>
+
+            
+
             </header>
-        
-            <main>
-                <BooksList books={books.showBooks}></BooksList>
-                <BooksPager activePage={books.activePage} handlePageSelect={handlePageSelect} itemsPerPage={itemsPerPage} allItemsCount={books.allBooks.length}></BooksPager>
-            </main>
-        </Types.Provider>
 
-            <main>
-                <VintedList vinted={vinted} vintedDispatch={vintedDispatch}></VintedList>
-            </main>
+            <RouterHooks></RouterHooks>
 
+            <Switch>
+
+                <Route path="/books">
+                    <main>
+                        <BooksList books={books.showBooks}></BooksList>
+                        <BooksPager activePage={books.activePage} handlePageSelect={handlePageSelect} itemsPerPage={itemsPerPage} allItemsCount={books.allBooks.length}></BooksPager>
+                    </main>
+                </Route>
+
+       
+                <Route path="/show-vinted">
+                    {/* <main>
+                        <VintedList vinted={vinted} vintedDispatch={vintedDispatch}></VintedList>
+                    </main> */}
+                </Route>
+
+                <Route path="/show-product/:id">
+                    {/* <main>
+                        <VintedProductPage vinted={vinted}></VintedProductPage>
+                    </main> */}
+                </Route>
+
+                <Route exact path="/">
+                    Home sweet home
+                </Route>
+
+                <Route path="*">
+                    404 PAGE NOT FOUND
+                </Route>
+
+            </Switch>
 
         <footer>
 
         </footer>
+        </Types.Provider>
+        </Router>
         </div>
     );
 }
