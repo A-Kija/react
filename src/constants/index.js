@@ -24,3 +24,7 @@ export const SET_ACTIVE_PAGE = 'SET_ACTIVE_PAGE';
 
 export const GET_NEWS_FROM_SERVER = 'GET_NEWS_FROM_SERVER';
 export const ADD_PRODUCT_FROM_SERVER = 'ADD_PRODUCT_FROM_SERVER';
+
+
+export const ADD_SHIP = 'ADD_SHIP';
+export const ADD_TRAIN = 'ADD_TRAIN';
