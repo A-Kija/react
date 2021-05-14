@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 const mapStateToProps = state => {
-    return { ships: state.ships }
+    return { ships: state.shipsReducer.ships }
 }
 
 
